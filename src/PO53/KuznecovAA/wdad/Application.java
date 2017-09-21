@@ -5,7 +5,7 @@ package PO53.KuznecovAA.wdad;
  */
 public class Application {
     public static  void main(String[] args){
-        System.out.println("I'm Kuznecovm and I'm not a monkey");
+        System.out.println("I'm Kuznecov and I'm not a monkey");
     }
 
 }

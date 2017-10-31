@@ -20,25 +20,24 @@ public class PreferencesManager {
     private static PreferencesManager instance;
     private Document document;
     private static String FILE_PATH="src/PO53/KuznecovAA/wdad/resources/configuration/appconfig.xml";
+    private static boolean IS_VALIDATE_DOCUMENT = true;
 
-    private PreferencesManager(String path) throws Exception {
+    private PreferencesManager() throws Exception {
         File fXmlFile = new File(FILE_PATH);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        dbFactory.setValidating(IS_VALIDATE_DOCUMENT);
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         document = dBuilder.parse(fXmlFile);
-        this.FILE_PATH = path;
     }
 
-    public static PreferencesManager getInstance() throws Exception {
+    public static synchronized PreferencesManager getInstance() throws Exception {
         if (instance == null)
-            instance = new PreferencesManager(FILE_PATH);
+            instance = new PreferencesManager();
         return instance;
     }
 
     private Element getElement(String nameField) {
-        NodeList nodeList = document.getElementsByTagName(nameField);
-        Element element = (Element) nodeList.item(0);
-        return element;
+        return (Element)document.getElementsByTagName(nameField).item(0);
     }
 
     public String getCreateregistry() {
@@ -98,8 +97,6 @@ public class PreferencesManager {
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(new File(FILE_PATH));
             transformer.transform(source, result);
-        } catch (TransformerConfigurationException ex) {
-            System.out.println(ex.getMessage());
         } catch (TransformerException ex) {
             System.out.println(ex.getMessage());
         }

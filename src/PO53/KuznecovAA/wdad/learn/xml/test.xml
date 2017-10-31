@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><notes>
+    <note>
+        <title>День первый</title>
+        <text>День закончился</text>
+        <owner mail="test@mail.ru" name="Aloy"/>
+       <privileges>
+           <ALL rights="R"/>
+           <user mail="test2@gmail.com" name="Александр" rights="R"/>
+       </privileges>
+        <cdate>29-07-2017</cdate>
+    </note>
+
+    <note>
+        <title>День второй</title>
+        <text>Обычный день</text>
+        <owner mail="test2@gmail.com" name="Александр"/>
+        <privileges>
+            <ALL rights="RW"/>
+            <user mail="test@mail.ru" name="Aloy" rights="RW"/>
+        </privileges>
+        <cdate/>
+    </note>
+
+</notes>
